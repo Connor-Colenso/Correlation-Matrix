@@ -29,7 +29,6 @@ def correlation_matrix_generator(asset_names, period='1y', visual=True, img_name
         assets.append(asset)
 
     for asset_pair in itertools.combinations(assets, 2):
-
         name1 = asset_pair[0].name
         name2 = asset_pair[1].name
 
@@ -42,7 +41,6 @@ def correlation_matrix_generator(asset_names, period='1y', visual=True, img_name
         correlation_matrix[name2][name1] = correlation
 
     if visual:
-
         image = image_matrix(matrix=correlation_matrix, scale=50, add_corr=True)
         image.save(f'{img_name}.png')
 
@@ -108,8 +106,6 @@ def image_matrix(matrix, scale=50, add_asset_text=True, add_corr=True, circle_mo
             if circle_mode:
 
                 s = scale * (1 - abs(original_matrix[x][y])) / 2
-
-                #                draw.rectangle((x1, y1, x2, y2), fill = background, width = 0)
                 draw.ellipse((x1 + s, y1 + s, x2 - s, y2 - s), fill=(r, 0, b), width=0)
 
             else:
